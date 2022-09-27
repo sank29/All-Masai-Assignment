@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Page</title>
+    <style>
+      #mainDiv {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+      }
+      #mainDiv > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #mainDiv > div > img {
+        width: 100%;
+      }
+      #mainDiv > div > button {
+        margin-bottom: 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1></h1>
+  </body>
+</html>
+
+<script>
+  let prodcutObj = JSON.parse(localStorage.getItem('Products')) || [];
+  let mainDiv = document.createElement('div');
+  mainDiv.setAttribute('id', 'mainDiv');
+  let body = document.querySelector('body');
+
+  function display(prodcutObj) {
+    mainDiv.innerHTML = '';
+    prodcutObj.forEach(function (element, index) {
+      let div = document.createElement('div');
+
+      let image = document.createElement('img');
+      image.setAttribute('src', element.image);
+
+      let h2 = document.createElement('h2');
+      h2.innerText = element.name;
+
+      let p = document.createElement('p');
+      p.innerText = `Gender: ${element.gender}`;
+
+      let p1 = document.createElement('p');
+      p1.innerText = `Price: $${element.price}`;
+
+      let button1 = document.createElement('button');
+      button1.setAttribute('class', 'remove');
+      button1.innerText = 'Remove';
+
+      let button2 = document.createElement('button');
+      button2.setAttribute('class', 'sold');
+      button2.innerText = 'Sold';
+      button2.style.color = 'white';
+      button2.style.padding = '10px';
+
+      button2.style.backgroundColor = element.sold === true ? 'red' : 'green';
+
+      div.append(image, h2, p, p1, button1, button2);
+      mainDiv.append(div);
+
+      button2.addEventListener('click', function (event) {
+        if (prodcutObj[index].sold === false) {
+          prodcutObj[index].sold = true;
+          localStorage.setItem('Products', JSON.stringify(prodcutObj));
+        } else {
+          prodcutObj[index].sold = false;
+          localStorage.setItem('Products', JSON.stringify(prodcutObj));
+        }
+        window.location.reload();
+      });
+    });
+    let admin = document.createElement('button');
+    admin.innerText = 'Go to Admin Page';
+
+    body.append(mainDiv, admin);
+
+    admin.addEventListener('click', function (event) {
+      window.location.href = 'index.html';
+    });
+  }
+
+  display(prodcutObj);
+
+  //Remove
+
+  let removeButton = document.querySelectorAll('.remove');
+
+  function removeProduct() {
+    removeButton.forEach(function (button, index) {
+      button.addEventListener('click', function () {
+        prodcutObj.splice(index, 1);
+        console.log(prodcutObj);
+        localStorage.setItem('Products', JSON.stringify(prodcutObj));
+        window.location.reload();
+        display(prodcutObj);
+      });
+    });
+  }
+  removeProduct(removeButton);
+
+  let h1 = document.querySelector('h1');
+  h1.innerText = `Total item ${prodcutObj.length}`;
+</script>

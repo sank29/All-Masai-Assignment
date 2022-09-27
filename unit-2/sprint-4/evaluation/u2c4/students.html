@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Students</title>
+    <style>
+      .navbar {
+        display: flex;
+        justify-content: space-evenly;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      .navbar > a {
+        text-decoration: none;
+      }
+      .navbar > a > h1 {
+        color: black;
+      }
+      div + h1 {
+        text-align: center;
+      }
+
+      /* table */
+      table {
+        margin: auto;
+        margin-top: 20px;
+        table-layout: auto;
+        width: 90%;
+      }
+      table > thead {
+        background-color: #008080;
+      }
+      table > thead > tr > th {
+        color: white;
+      }
+      tbody > tr > td {
+        text-align: center;
+        margin-left: 20px;
+      }
+      tbody > tr > td:last-child {
+        background-color: red;
+        cursor: pointer;
+      }
+      tbody > tr > td:nth-child(6) {
+        background-color: green;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="./index.html"><h1>Add Students</h1></a>
+      <a href="./students.html"><h1>Students Database</h1></a>
+      <a href="./admitted.html"><h1>Admitted</h1></a>
+      <a href="./rejected.html"><h1>Rejected</h1></a>
+    </div>
+    <select id="filter">
+      <option value="">Filter By Course</option>
+      <option value="all">All</option>
+      <option value="Web-Development">Web-Development</option>
+      <option value="Android-Development">Android-Development</option>
+      <option value="Data-Analitics">Data-Analitics</option>
+    </select>
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Gender</th>
+          <th>Phone</th>
+          <th>Admitted</th>
+          <th>Rejected</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table Rows should be appended Here  -->
+      </tbody>
+    </table>
+  </body>
+  <script src="./students.js"></script>
+</html>

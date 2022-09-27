@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img
+      id="payImg"
+      src="https://c.tenor.com/K2UGDd4acJUAAAAM/load-loading.gif"
+      alt=""
+    />
+  </body>
+</html>
+
+<script>
+  function bankServer() {
+    return true;
+  }
+
+  let payment_promise = new Promise(function (resolve, reject) {
+    let pin = bankServer();
+
+    setTimeout(function () {
+      if (pin) {
+        resolve("Payment successfull!");
+      } else {
+        reject("Try again late.");
+      }
+    }, 3000);
+  });
+
+  let image = document.querySelector("#payImg");
+
+  //   payment_promise.then(function (res) {
+  //     console.log(res);
+  //     image.src = "https://c.tenor.com/xVfFIHxAzW4AAAAC/success.gif";
+  //   });
+
+  //   payment_promise.catch(function (rej) {
+  //     console.log(rej);
+  //     image.src = "https://miro.medium.com/max/418/1*9MB_2QMF-LN5Va_V7urxwA.png";
+  //   });
+
+  async function content() {
+    try {
+      let res = await payment_promise;
+      console.log(res);
+      image.src = "https://c.tenor.com/xVfFIHxAzW4AAAAC/success.gif";
+    } catch (err) {
+      console.log(err);
+      image.src =
+        "https://miro.medium.com/max/418/1*9MB_2QMF-LN5Va_V7urxwA.png";
+    }
+  }
+  content();
+</script>

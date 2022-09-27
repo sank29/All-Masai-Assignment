@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      h1 {
+        color: teal;
+        text-align: center;
+      }
+      #calci {
+        border: 1px solid transparent;
+        width: 20%;
+        margin: auto;
+        padding: 0px 20px 0px 20px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 5px;
+      }
+      #calci > div:first-child {
+        width: 80%;
+        margin: auto;
+        margin-top: 40px;
+        height: 50px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 5px;
+      }
+      #calci > div:last-child {
+        margin-bottom: 50px;
+      }
+      #calci > div:last-child {
+        display: grid;
+        margin-top: 30px;
+        grid-template-columns: repeat(4, 18%);
+        grid-template-rows: repeat(4, 40px);
+        gap: 10px;
+        justify-content: center;
+      }
+      #calci > div:last-child > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: large;
+        font-weight: bolder;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 5px;
+      }
+      .black {
+        background-color: black;
+        color: white;
+      }
+      .red {
+        background-color: red;
+        color: white;
+      }
+      #calci > div:nth-child(2) > div:hover {
+        background-color: pink;
+      }
+      #display {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Masai Calculator</h1>
+    <div id="calci">
+      <div id="display"></div>
+      <div id="allNumbers">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div class="black">+</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div class="black">-</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+        <div class="black">x</div>
+        <div class="red">C</div>
+        <div>0</div>
+        <div class="black">=</div>
+        <div class="black">/</div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let allDivs = document.querySelectorAll('#allNumbers>div');
+  let bag = '';
+
+  for (let i = 0; i <= allDivs.length - 1; i++) {
+    allDivs[i].addEventListener('click', calculation);
+  }
+  function calculation(event) {
+    let display = document.querySelector('#display');
+    let target = event.target.innerText;
+
+    if (target === 'C') {
+      display.innerText = '';
+    } else if (target === '=') {
+      console.log(target);
+      //   document.querySelector('#display').innerText = eval(bag);
+      console.log(bag);
+      console.log(eval(bag));
+    } else {
+      bag += event.target.innerText;
+      display.innerText = bag;
+      console.log(bag);
+    }
+  }
+</script>

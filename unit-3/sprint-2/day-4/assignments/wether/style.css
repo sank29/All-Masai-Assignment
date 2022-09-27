@@ -1,0 +1,55 @@
+#container{
+    width: 50%;
+}
+/* .mapouter {
+      /* text-align: right;
+      height: 500px;
+      width: 600px; */
+      /* margin-left: 55%; */
+      /* margin-top: -175px;*/
+/* } */ */
+
+.gmap_canvas {
+       overflow: hidden;
+       background: none !important;
+       height: 500px;
+       width: 600px;
+}
+
+#future>h3{
+    border: 1px solid green;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    height: 30px;
+    
+}
+#main{
+    border: 1px sold purple;
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+#main>div:first-child{
+    width: 50%;
+}
+#main>div:last-child{
+    width: 50%;
+}
+
+h3{
+    text-align: center;
+}
+
+#future{
+    display: flex;
+}
+
+#future>div{
+    border: 2px solid red;
+    text-align: center;
+}
+
+#future>div>img{
+    width: 200px;
+}

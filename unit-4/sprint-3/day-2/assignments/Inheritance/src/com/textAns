@@ -1,0 +1,5 @@
+Q4)   Explain the difference between overloading and overriding methods with an example?
+Ans : In overloading method name is same but method parameter is difference. In overriding we are overriding the 
+      method in other class and we are setting the method body as we wish. Overloading occurs in same class and 
+      overriding occurs in in two classes with inheritance relationships. For method overloading inheritance is may or
+      may be required but in method overriding inheritance is required. 

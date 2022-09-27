@@ -1,0 +1,82 @@
+<html>
+  <head>
+    <title>Practise Selectors</title>
+  </head>
+  <body>
+    <h1>First H1</h1>
+    <h1>Second H1</h1>
+    <h3>First H3</h3>
+    <h3>Second H3</h3>
+    <h5>First H5</h5>
+    <h5>Second H5</h5>
+    <h5>Third H5</h5>
+    <div class="green">First DIV</div>
+    <div class="red">Second DIV</div>
+    <div class="blue">Third DIV</div>
+    <p class="green">First P</p>
+    <p class="red">Second P</p>
+    <p class="blue">Third P</p>
+    <hr />
+    <button id="btn1">Change H1</button>
+    <button id="btn2">Change H3</button>
+    <button id="btn3">Change H5</button>
+    <button id="btn4">Change Green</button>
+    <button id="btn5">Change Red</button>
+    <button id="btn6">Change Blue</button>
+    <script></script>
+  </body>
+</html>
+
+<script>
+  document.querySelector('#btn1').addEventListener('click', red);
+
+  document.querySelector('#btn2').addEventListener('click', green);
+
+  document.querySelector('#btn3').addEventListener('click', blue);
+
+  document.querySelector('#btn4').addEventListener('click', greensecond);
+
+  document.querySelector('#btn5').addEventListener('click', redsecond);
+
+  document.querySelector('#btn6').addEventListener('click', bluesecond);
+
+  function red() {
+    document.querySelector('h1').style.color = 'red';
+  }
+
+  function green() {
+    let alltags = document.querySelectorAll('h3');
+    console.log(alltags);
+    for (let i = 0; i <= alltags.length - 1; i++) {
+      alltags[i].style.color = 'green';
+    }
+  }
+  function blue() {
+    let htag = document.querySelectorAll('h5');
+
+    for (let i = 0; i <= htag.length - 1; i++) {
+      htag[i].style.color = 'blue';
+    }
+  }
+
+  function greensecond() {
+    let allgreenDiv = document.querySelectorAll('.green');
+    for (let i = 0; i <= allgreenDiv.length - 1; i++) {
+      allgreenDiv[i].style.color = 'green';
+    }
+  }
+
+  function redsecond() {
+    let allreddiv = document.querySelectorAll('.red');
+    for (let i = 0; i <= allreddiv.length - 1; i++) {
+      allreddiv[i].style.color = 'red';
+    }
+  }
+
+  function bluesecond() {
+    let allblue = document.querySelectorAll('.blue');
+    for (let i = 0; i <= allblue.length - 1; i++) {
+      allblue[i].style.color = 'blue';
+    }
+  }
+</script>

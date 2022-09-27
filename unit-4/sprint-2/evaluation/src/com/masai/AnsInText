@@ -1,0 +1,68 @@
+Q1) a) Why String is immutable in java and what is the difference between String and String Builder? And Write
+some of the methods of String class at least 5 with example.
+
+Ans: String is immutable meaning if we create the string using String class then we can't change that string and it's
+     impossible to change that string in entire program. Then is major difference between String and
+     String builder. If we create the string using String class then we can't change or mutate that
+     string and if we create that string using String builder the we can change that string or mutate
+     that string. By String Builder it's possible to mutate that string, if we want to change string
+     then create that string using Builder class.
+     
+     Methods in String class:
+     1) length()   // returns int
+     syntax:
+     String str = new String("hello")
+     int result = str.length()  //5
+     
+     2) isEmpty()  // returns boolean 
+     String str = new String("hello")
+     int result = str.isEmpty()  //false
+     
+     3) split() // split the string
+     4) replace() //replace the words
+     5) trim()  //remove spaces in string
+     
+     
+     b) What is the difference between equals method and == operator in java? And what
+     will be the output of the
+     following code snippets and giving proper explanation.
+Ans: Equals meaning it will asign the value to variable and == operator in conditional operation
+     it will check the condition given.
+     
+
+     Code snippet 1 >
+     String s1 = new String("abc");
+     String s2 = new String("abc");
+     System.out.println(s1.equals(s2));
+     
+Explanation: output will be true because we are checking the string abc is same in both the string
+             therefore it is true.
+             
+     Code snippet 2 >
+     StringBuilder sb1 = new StringBuilder("abc");
+     StringBuilder sb2 = new StringBuilder("abc");
+     System.out.println(sb1.equals(sb2));
+
+Explanation: output will be true because we are checking the string abc is same in both the string
+             therefore it is true. 
+
+
+
+      Code snippet 3 >
+      String s1 = new String("abc");
+      String s2 = new String("abc");
+      System.out.println(s1==s2);
+Explanation: output will be false because we are creating two different object in our heap area
+             therefore two object address will be different therefore false. 
+
+
+
+
+
+
+
+
+
+
+
+ 

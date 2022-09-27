@@ -1,0 +1,9 @@
+Q1)  Is there any difference between creating a string with and without a new operator?  
+     Explain with an example.
+
+Ans: Yes there is hug difference between creating a string with and without a new operator, because if we create new
+     string without giving the new operator then one object will create in scp area if we again created the new string
+     without the new operator with same value string then it will not create the new string and the same object will 
+     point to that newly created string. If we created the new string with help of new keyword then every time we create
+     the string then new keyword will reserve some space in heap area and it will create new object there.
+     

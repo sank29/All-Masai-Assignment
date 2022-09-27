@@ -1,0 +1,52 @@
+                                      Day 2 Assignment
+
+Q1)  Explain Type casting and its types with examples?
+Ans: The process of converting one data type to another is called type casting
+     There are two type of casting:
+     Implicit type casting 
+     Explicit type casting
+
+     In Implicit type casting, If we convert data from lower data type to higher data
+     type then this casting is called implicit type casting.
+     Example:-
+     byte num = 10;
+     int result = num;
+     System.out.println(result);
+
+     In Explicit type casting, If we convert data from higher 
+     data type to lower data type then this casting is called explicit type casting.
+     Example:-
+     Int result = 10;
+     byte num = (byte)result;
+     From the above example we are trying to save our data from int 
+     to byte that’s why error will come therefore we have to explicitly write (byte) 
+     in front of the result to tell the compiler first to convert this result into byte 
+     the save into byte data type.
+
+     
+Q3)  Explain the difference between local and instance variables?	
+Ans: Instance variables are declared within the class but 
+     outside the method and local variables are declared within the 
+     method and its scope is generally limited to the method. Instance variables access 
+     throughout the class and local variables we can access only in method. Instance variables 
+     will get default value if value is not assigned by the user but in local variables we have 
+     to assign value before using it.
+
+     Example of Instance:
+     class Person{
+     int age = 20; // Instance variable 
+     }
+
+
+     Example of local variables:
+
+     class Person{
+     public static void calculateAge(){
+     int age = 23; // local variable 
+     System.out.println(2022 - age)
+
+     }
+     }
+
+     Explain : From above example int age is local variable
+     

@@ -1,0 +1,13 @@
+#hotels-list{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 10px;
+}
+#hotel{
+    border: 1px solid red;
+    text-align: center;
+}
+#hotel>img{
+    width: 100%;
+}

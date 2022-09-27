@@ -1,0 +1,41 @@
+Q1)  Explain about the Marker interface?
+Ans: An interface does not contain methods, fields is know as marker interface. Empty interface is also know as interface. 
+     Serialization and Cloneable is example of Marker interface.
+     
+     example:
+     
+     public interface Sanket{
+     
+     
+     
+     
+     }
+     
+     Above interface is know as Marker interface.
+     
+     
+Q2)  Why multiple Inheritance is not supported in Java at the class Level?
+Ans: In java multiple inheritace is not supported because of ambiguity problem in java.
+
+     Example: class sanket{ 
+        public void displayName(){
+         System.out.println("Sanket");
+        }
+     }
+     
+     class akash{
+     public void displayName(){
+     System.out.println("Akash");
+     }
+     }
+     
+     
+     class Main extends sanket,akash{
+     
+     public static void main(String[] args){
+         Main obj = new Main();
+         
+         obj.displayName() // ambiguity error
+     }
+     
+     }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/admin.css" />
+  </head>
+  <body>
+    <h1>Welcome to Admin Page😃</h1>
+    <h2>Add Menu🍉</h2>
+
+    <form id="addForm" action="">
+      <input placeholder="Food id" type="number" id="id" />
+      <input placeholder="Food img" type="text" id="img" />
+      <input placeholder="Food title" type="text" id="title" />
+      <input placeholder="Food description" type="text" id="des" />
+      <input placeholder="Food price" type="number" id="price" />
+      <input type="submit" />
+    </form>
+    <h2>Edit Menu🍉</h2>
+
+    <form id="editForm" action="">
+      <input placeholder="Which ID" type="number" id="editId" />
+      <input placeholder="Edit Image" type="text" id="editImg" />
+      <input placeholder="Edit Title" type="text" id="editTitle" />
+      <input placeholder="Edit Description" type="text" id="editDes" />
+      <input placeholder="Edit Price" type="number" id="editPrice" />
+      <input type="submit" />
+    </form>
+
+    <h2>Delete Menu</h2>
+    <input placeholder="Which id" type="number" id="deleteMenu" />
+    <button id="deleteId">Submit</button>
+
+    <div id="addedMenu"></div>
+  </body>
+</html>
+<script src="./script/admin.js"></script>

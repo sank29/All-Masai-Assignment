@@ -1,0 +1,29 @@
+Day 1 Assignment JA111
+
+Q1)  Write the difference between JRE, JDK and JVM?
+Ans: JDK (Java Development Software) is software development
+     environment used to development java applications.
+     In JDK there is JRE and a development tool (compiler, debugger).
+     JRE stands for Java Runtime Environment.
+     In JRE there are JVM (Java Virtual Machine) and predefined library classes.
+     If we want to run only java application then we need only JRE and no need to download
+     development tool, we can download JRE separately but we can’t download development tool
+     separately. What will happen in JRE first our .java file goes to java compiler
+     the compiler compiles the file if there is no error then .class file will
+     generate and that .class file goes to JVM and then our file will execute. 
+
+Q2)  Write the difference between JSE, JEE and JME?
+Ans: JSE (Java Standard Edition) is used for developing applications/desktop applications.
+     JEE (Java Enterprise Edition) is used to develop big enterprise web applications.
+     JME (Java Micro Edition) is used for applications run on mobile, smart watches etc.
+
+Q3)  How does java achieve platform independency?
+Ans: The meaning of java achieves platform independency meaning
+     java compiled code can run on all operating systems. 
+
+Q4)  What are features of Java and explain them?
+Ans: Java is platform independent because if we can run java compiled code on any operating system.
+     Java is simple to learn, Java is designed in such a way that we can
+     learn this language very quickly. With java we can write code securely
+     without viruses, we can’t change java byte code, robust, multithreading,
+     high performance, dynamic are all features of java.

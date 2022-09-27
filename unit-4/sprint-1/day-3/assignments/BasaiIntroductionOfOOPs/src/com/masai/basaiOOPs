@@ -1,0 +1,30 @@
+Q3)  Define Wrapper Classes in Java
+Ans:
+    Class representation of primitive data types is called wrapper class.
+
+    Byte : java.lang.Byte
+    sort : java.lang.Sort
+    Int : java.lang.Integer
+    long : java.lang.Long
+    float : java.lang.Float
+    double : java.lang.Double
+    char : java.lang.Character
+    boolean : java.lang.Boolean
+
+    All the above wrapper classes belong to the java.lang package.
+
+ 
+ Q4) Explain why the following block of code will give a compile time error
+     public class Main {
+     public static void main(String[] args){
+
+     float f=3.3; 
+     System.out.println(f); 
+
+}
+} 
+
+Ans: From above code there is error in float f=3.3 because java
+     treats 3.3 as double and not float. That's why we need to convert
+     3.3 in float and then store this value in f. 
+    

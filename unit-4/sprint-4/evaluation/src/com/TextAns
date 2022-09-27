@@ -1,0 +1,4 @@
+Q2)  Explain about Hashcode and Equals Method.
+Ans: Hashcode method returns the unique value to related to object and equals method check the object refereances equality of two object whether those object is same or not.
+     In hashcode that hashcode value came from memory address in heap and in equals method if and only if two object are same when their memory address is same.
+     When can override this method and write our logic accordingly in equals method and we can't override the hashcode method to do our logic.

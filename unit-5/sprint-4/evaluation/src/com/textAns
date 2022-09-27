@@ -1,0 +1,228 @@
+Q1) Consider the following tables:
+
+● Establish Many-to-Many relationships between the Student and the Course
+table.
+
+mysql> create database evalutionStudentCourse;
+
+mysql> use evalutionStudentCourse;
+
+mysql> create table student(roll int primary key, name varchar(12) not null, address varchar(12) not null, mobile varchar(10) not null);
+
+mysql> create table course(cid int primary key, cname varchar(12) not null, fee int not null, duration varchar(12) not null ); 
+
+mysql> create table student_course(roll int, cid int, foreign key(roll) references student(roll), foreign key(cid) references course(cid));
+
+table of student
+
++------+--------+---------+----------+                  
+| roll | name   | address | mobile   |                                                                  
++------+--------+---------+----------+                                                                  
+|   12 | venkat | pune    | 3322344  |                                                                  
+|   13 | Amit   | nagpur  | 37373636 |                                                                  
+|   15 | raj    | nashik  | 23444234 |                                                                  
+|   16 | Binay  | mumbai  | 478478   |                                                                  
+|   17 | suresh | goa     | 44244234 |                                                                  
++------+--------+---------+----------+ 
+
+table of course
+
++------+-----------+--------+----------+                                                                
+| cid  | cname     | fee    | duration |                                                                
++------+-----------+--------+----------+                                                                
+| 1001 | java      |  10000 | 12months |                                                                
+| 1002 | spring    |  90000 | 12months |                                                                
+| 1003 | hibernate |  23333 | 12months |                                                                
+| 1004 | Rect      | 233444 | 12months |                                                                
+| 1005 | Angular   |   2922 | 12months |                                                                
++------+-----------+--------+----------+ 
+
+
+● Write a SQL to enroll Amit in Java and Spring.
+
+mysql> insert student_course values(13,1001); 
+
+● Write a SQL to enroll Venkat in Java and React.
+
+mysql> insert student_course values(12,1001);
+mysql> insert student_course values(12,1004);
+
+
+● Write a SQL to enroll Raj in Spring and Angular.
+
+mysql> insert student_course values(15,1002); 
+mysql> insert student_course values(15,1005); 
+
+● Write a SQL to enroll Suresh in Java, Hibernate and React
+
+mysql> insert student_course values(17,1003); 
+mysql> insert student_course values(17,1004);
+
+
+● Write a SQL to enroll Binay in React
+
+mysql> insert student_course values(16,1004); 
+
+
+
+Q2) Consider the following tables:
+
+mysql> create database evalutionDepartment; 
+
+creating the deparment table
+
+mysql> create table department(
+       did int primary key, 
+       dname varchar(12) not null, 
+       location varchar(12) not null); 
+
+creating the employee table
+
+mysql> create table employee(
+       empId int primary key,
+       ename varchar(12) not null,
+       address varchar(12) not null, 
+       mobile varchar(12) not null, 
+       salary int not null,
+       deptId int, 
+       foreign key(deptId) references department(did)); 
+
+
+● Using SQL insert 4 Department records in the Department table(Account, Sales,
+Marketing, HR).
+
+mysql> insert department values(1,'Account','Pune'); 
+mysql> insert department values(2,'Sales','Mumbai'); 
+mysql> insert department values(3,'Marketing','Nagpur');
+mysql> insert department values(4,'HR','Nashik'); 
+
+● Using SQL register 2 employees in Accounts Department.
+
+mysql> insert employee values(100,'sanket','pune','3423423',122333,1); 
+mysql> insert employee values(101,'akash','pune','3444423',122333,1);
+
+● Using SQL register 3 employees in Sales Department.
+
+mysql> insert employee values(200,'rushi','mumbai','3454423',134433,2); 
+mysql> insert employee values(201,'bachu','mumbai','444232423',134433,2);
+mysql> insert employee values(202,'ankit','mumbai','4445442423',134433,2); 
+
+
+● Using SQL register 2 employees in Marketing Department
+
+mysql> insert employee values(300,'akash','nagpur','444232423',134433,3);
+mysql> insert employee values(301,'yogesh','nagpur','444232423',134433,3); 
+
+● Using SQL register 2 employees in HR Department.
+
+mysql> insert employee values(400,'rahul','nashik','444232423',134433,4); 
+mysql> insert employee values(401,'banti','nashik','444232423',134433,4);
+
+table of department
+
++-----+-----------+----------+                                                                          
+| did | dname     | location |                                                                          
++-----+-----------+----------+                                                                          
+|   1 | Account   | Pune     |                                                                          
+|   2 | Sales     | Mumbai   |                                                                          
+|   3 | Marketing | Nagpur   |                                                                          
+|   4 | HR        | Nashik   |                                                                          
++-----+-----------+----------+ 
+
+table of employee
+
++-------+--------+---------+------------+--------+--------+
+| empId | ename  | address | mobile     | salary | deptId |
++-------+--------+---------+------------+--------+--------+
+|   100 | sanket | pune    | 3423423    | 122333 |      1 |
+|   101 | akash  | pune    | 3444423    | 122333 |      1 |
+|   200 | rushi  | mumbai  | 3454423    | 134433 |      2 |
+|   201 | bachu  | mumbai  | 444232423  | 134433 |      2 |                                             
+|   202 | ankit  | mumbai  | 4445442423 | 134433 |      2 |                                             
+|   300 | akash  | nagpur  | 444232423  | 134433 |      3 |                                             
+|   301 | yogesh | nagpur  | 444232423  | 134433 |      3 |                                             
+|   400 | rahul  | nashik  | 444232423  | 134433 |      4 |                                             
+|   401 | banti  | nashik  | 444232423  | 134433 |      4 |                                             
++-------+--------+---------+------------+--------+--------+  
+
+
+● Write a SQL query to get the total salary of employees, department-wise
+
+
+
+
+● Write a SQL query to get all the employee details who enrolled in the Sales
+department.
+
+
+
+
+● Write a SQL query to get the Department details for an employee based on the
+empId.
+
+
+
+
+● Write a SQL query to get the second highest salary paid employee from the
+Employee table.
+
+
+
+
+
+
+Q3)  How many types of relationships exist among tables in the Database? Explain with some examples, and also mention how to establish
+     these relationships among tables with examples.
+
+Ans: There are there type of relationships exist among the tables
+
+     1. One to one relationship
+     2. one to many relationship
+     3. Many to Many relationship
+     
+     1. One to one relationship:
+     examples are Person to passport relationship, person to name etc
+     
+     if we create person table and set person id to primary key and we create person details table in this table if we set foreign key person id to 
+     reference to person id then the relationship is called as one to one relationship.
+     
+     2. One to many relationship
+     
+     examples are person to house, person to child, teacher to student
+     
+     3. Many to many relationship
+     
+     examples are Movie to actors, Book to author this are many to many relationship.
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

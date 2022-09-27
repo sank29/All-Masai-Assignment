@@ -1,0 +1,4 @@
+Q3)  Explain the difference between abstract class and interface.
+Ans: Abstract class does'nt support multiple inheritance and interface supports multiple inheritance. Abstract 
+     keyword is use to define abstract class and interface keyword is use to define interface. Abstract class can be
+     extended using extends keyword and interface can be implemented using implements keyword.

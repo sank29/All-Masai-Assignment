@@ -1,0 +1,4 @@
+Q5)  Explain Difference between Upper Bounded Wildcards and Lower Bounded Wildcards with Example.
+Ans: Bounded and unbounded wildcards is use in bound any type. Upper bounded is denoted by using <? extends T> where all type must be sub -
+     class of T and Lower bounded wildcards denoted by using <? super T> where all type must be T or it's parent class of T. Both upper
+     bounded wildcards and lower bounded wildcards provides the limited flexibility within bound.

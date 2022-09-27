@@ -1,0 +1,128 @@
+#heading{
+    width: 10%;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 80px;
+    cursor: pointer;
+}
+
+#card{
+    width: 35%;
+    margin: auto;
+    height: 800px;
+    margin-top: 30px;
+    border-radius: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    padding-top: 10px;
+}
+
+#card>div:first-child{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+#input{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 85%;
+    margin: auto;
+    height: 700px;
+}
+
+#input>div{
+    display: flex;
+    flex-direction: column;
+}
+
+#input>div:nth-child(4)>p:first-child{
+    font-weight:normal;
+    text-align: center;
+    margin-bottom: 3px;
+}
+#input>div:nth-child(4)>p:last-child{
+    margin-top: 0px;
+    margin: auto;
+}
+#input>div>input{
+    border: 1px solid rgba(209, 213, 219);
+    border-width: 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: lighter;
+    border-radius: 5px;
+}
+
+.inputStyle{
+    font-size: 20px;
+    font-weight: 600;
+    color: #4b6f7c;
+}
+
+#signUp{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e8eaed;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-weight: lighter;
+    color:#4b6f7c; 
+    border-radius: 7px;
+    font-size: 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+#input>div:last-child{
+    text-align: center;
+}
+#input>div:last-child>p{
+    font-size: 20px;
+    font-weight: lighter;
+}
+
+*{
+    font-family:ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif,
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+}
+
+a{
+    color: rgba(37, 99, 235)
+}
+#signIn{
+    color: #6e80eb;
+    font-weight:500;
+    text-decoration: none;
+}
+
+#termAndCondition{
+    width: 30%;
+    margin: auto;
+}
+.grayText {
+    color: rgba(107, 114, 128);
+}
+#termAndCondition>p{
+    text-align: center;
+    font-size:20px;
+    margin-top: 3px;
+}
+

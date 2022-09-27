@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+  <style>
+    #container > button {
+      border: 1px solid transparent;
+      padding: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-left: 5px;
+      border-radius: 5px;
+    }
+  </style>
+</html>
+<script>
+  let container = document.querySelector('#container');
+  let arr = [
+    { name: 'Primary', backColor: 'blue', color: 'white' },
+    { name: 'Secondary', backColor: 'pink', color: 'white' },
+    { name: 'Success', backColor: 'green', color: 'white' },
+    { name: 'Danger', backColor: 'red', color: 'white' },
+    { name: 'Warning', backColor: 'orange', color: 'white' },
+    { name: 'Info', backColor: '#17a2b8', color: 'white' },
+    { name: 'Light', backColor: 'white', color: 'black' },
+    { name: 'Dark', backColor: 'black', color: 'white' },
+    { name: 'Link', backColor: 'white', color: 'blue' },
+  ];
+  arr.forEach(function (elements) {
+    let button = document.createElement('button');
+    button.innerText = elements.name;
+    button.style.backgroundColor = elements.backColor;
+    button.style.color = elements.color;
+
+    container.append(button);
+  });
+</script>

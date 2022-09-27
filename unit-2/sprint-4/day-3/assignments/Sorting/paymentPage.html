@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        margin: auto;
+        width: 20%;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Payment Page💵</h1>
+    <form action="">
+      <label for="name">Please Enter Name:</label>
+      <input id="name" type="text" />
+      <label for="debit card">Please Enter Debit Card:</label>
+      <input id="debitCard" type="number" />
+      <label for="cvv">Enter CVV</label>
+      <input id="cvv" type="number" />
+      <label for="otp">Please enter OTP</label>
+      <input id="otp" type="number" />
+      <input type="submit" name="" id="" />
+    </form>
+  </body>
+</html>
+
+<script>
+  let paymentData = JSON.parse(localStorage.getItem('paymentData')) || [];
+  let form = document.querySelector('form');
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    let obj = {
+      name: form.name.value,
+      debitCard: debitCard.value,
+      cvv: form.cvv.value,
+      otp: form.otp.value,
+    };
+    cheakUser(obj);
+  });
+
+  function cheakUser(obj) {
+    if (!obj.name) {
+      alert('Please enter name');
+      location.reload();
+    }
+    if (!obj.debitCard) {
+      alert('Please enter your debit Card');
+      location.reload();
+    }
+    if (!obj.cvv) {
+      alert('Please enter cvv');
+      location.reload();
+    }
+    console.log(obj.otp);
+    if (obj.otp === '') {
+      alert('We are redireating toward OTP page');
+      window.location.href = 'otp.html';
+    }
+
+    if (obj.otp === '1234') {
+      alert('Your payment successful');
+    }
+    if (obj.otp !== '1234' && obj.otp !== '') {
+      alert('Your otp is wrong');
+    }
+
+    paymentData.push(obj);
+    localStorage.setItem('paymentData', JSON.stringify(paymentData));
+  }
+</script>

@@ -1,0 +1,18 @@
+Q3)  What is the use of ‘this’ and ‘super’ keywords in java ? Explain with an example.
+Ans: this keyword is use for current instance of the class and super keyword is use for the current instance of
+     a parent class. 
+     
+     example:
+     
+     Vechicle.java
+     
+    public class Vechicle {
+	private String name;
+	private String size;
+
+
+	public Vechicle(String name, String size) {
+		this.name = name;
+		this.size = size;
+	}
+     

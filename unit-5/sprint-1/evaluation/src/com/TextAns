@@ -1,0 +1,25 @@
+Question 4: What will be the output of below code and why?
+public class CheckOutput {
+public static void main(String args[])
+{
+try
+{
+System.out.print("A");
+int num = 99/0;
+System.out.print("B");
+}
+catch(ArithmeticException ex)
+{
+System.out.print("C");
+}
+catch(Exception ex)
+{
+System.out.print("D");
+}
+System.out.print("E");
+}
+}
+
+Ans: In this program line no 7 will be print as "A", when controller will come on line no 8 then 99/0 will be infinity and the int value
+     is not capable of storing such a large value then jvm will create one ArithmeticException exception we have to handle that exception before it will go
+     again to the jvm then there is catch block ArithmeticException, therefore that block will run and then "C" will be print(line 13)

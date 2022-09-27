@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Calculator</title>
+    <style>
+      div {
+        margin-top: 10px;
+      }
+      button {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input
+      type="number"
+      name=""
+      id="firstNumber"
+      placeholder="Enter 1st Number"
+    />
+    <input type="number" id="secondNumber" placeholder="Enter 2nd Number" />
+    <div>
+      <button onclick="add()">Add</button>
+      <button onclick="subtract()">Subtract</button>
+      <button onclick="divide()">Divide</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  function add() {
+    let firstNumber = document.getElementById('firstNumber').value;
+    let secondNumber = document.getElementById('secondNumber').value;
+    let result = +secondNumber + +firstNumber;
+    alert(result);
+  }
+
+  function subtract() {
+    let firstNumber = document.getElementById('firstNumber').value;
+    let secondNumber = document.getElementById('secondNumber').value;
+    let result = +firstNumber - +secondNumber;
+    alert(result);
+  }
+  function divide() {
+    let firstNumber = document.getElementById('firstNumber').value;
+    let secondNumber = document.getElementById('secondNumber').value;
+    let result = +firstNumber / +secondNumber;
+    alert(result);
+  }
+</script>

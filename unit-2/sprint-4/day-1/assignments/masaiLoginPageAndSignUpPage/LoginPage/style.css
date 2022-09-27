@@ -1,0 +1,98 @@
+/* FirstPart */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #efeff6;
+}
+#navbar{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#navbar>div:first-child>img{
+    margin-left: 30px;
+    height: 45px;
+}
+#navbar>div:last-child>p{
+
+    margin-right: 30px;
+    font-size: 18px;
+    font-weight: lighter;
+    color:rgba(107, 114, 128); 
+}
+.grayColor{
+color: rgba(107, 114, 128);
+}
+
+/* SecondPart */
+ 
+#login{
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    height: 390px;
+    margin-top: 30px;
+   
+}
+
+
+#login>div:nth-child(1){
+    border-bottom: 0.1px solid rgba(107, 114, 128);
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding-left: 15px;
+
+}
+
+#inputs{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.flex{
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content:space-between;
+    align-items: center;
+}
+.flex>input{
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+}
+.password{
+    margin-left: 10px;
+}
+#inputs>div:nth-child(3){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#loginButton{
+    display: flex;
+    justify-content: center;
+}
+#loginButton>button{
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: blue;
+    margin-right: 30px;
+    color: white;
+    cursor: pointer;
+}
+#loginButton>p{
+    color: blue;
+    cursor: pointer;
+}

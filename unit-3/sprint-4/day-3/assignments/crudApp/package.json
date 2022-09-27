@@ -1,0 +1,14 @@
+{
+  "name": "ecommerceapp",
+  "version": "1.0.0",
+  "description": "this is e commerce app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sanket",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}

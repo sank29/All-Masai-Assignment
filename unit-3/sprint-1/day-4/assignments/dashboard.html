@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #navbar {
+        background-color: black;
+        color: white;
+        padding: 10px;
+      }
+      #navbar > p {
+        text-align: center;
+      }
+      #mainDiv {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <div id="container"></div>
+  </body>
+  <script>
+    let data = JSON.parse(localStorage.getItem('data')) || [];
+    let trash = JSON.parse(localStorage.getItem('trash'));
+
+    function display() {
+      let body = document.querySelector('body');
+      console.log(body);
+      let container = document.querySelector('#container');
+      let mainDiv = document.createElement('div');
+      mainDiv.setAttribute('id', 'mainDiv');
+      mainDiv.innerHTML = '';
+
+      data.forEach(function (element) {
+        let div = document.createElement('div');
+        div.setAttribute('class', 'eachStudent');
+
+        let image = document.createElement('img');
+        image.setAttribute('src', element.image);
+
+        let p1 = document.createElement('p');
+        p1.innerText = `Name: ${element.name}`;
+
+        let p2 = document.createElement('p');
+        p2.innerText = `Course: ${element.course}`;
+
+        let p3 = document.createElement('p');
+        p3.innerText = `Unit: ${element.unit}`;
+
+        let p4 = document.createElement('p');
+        p4.innerText = `Unit: ${element.batch}`;
+
+        let removeButton = document.createElement('button');
+        removeButton.innerText = 'Remove';
+        removeButton.style.backgroundColor = 'red';
+        removeButton.style.color = 'white';
+        removeButton.style.cursor = 'pointer';
+        removeButton.setAttribute('class', 'removeButton');
+
+        div.append(image, p1, p2, p3, p4, removeButton);
+        mainDiv.append(div);
+      });
+      container.append(mainDiv);
+    }
+    display(data);
+
+    //display on navbar
+    function calculate(data) {
+      let batchObj = {};
+
+      for (let i = 0; i <= data.length - 1; i++) {
+        if (batchObj[data[i].batch] === undefined) {
+          batchObj[data[i].batch] = 1;
+        } else {
+          batchObj[data[i].batch]++;
+        }
+      }
+      console.log(batchObj);
+      return batchObj;
+    }
+
+    //display batch on navbar
+    function displayOnNav(data) {
+      let navbar = document.querySelector('#navbar');
+      let p = document.createElement('p');
+
+      let batchObj = calculate(data);
+
+      for (let element in batchObj) {
+        p.innerText += ` ${element} - ${batchObj[element]} | `;
+      }
+
+      navbar.append(p);
+    }
+    displayOnNav(data);
+
+    //Remove functionality
+
+    let removeButton = document.querySelectorAll('.removeButton');
+
+    function removeStudent(data) {
+      removeButton.forEach(function (element, index) {
+        element.addEventListener('click', function (event) {
+          let [removedData] = data.splice(index, 1);
+          localStorage.setItem('data', JSON.stringify(data));
+          display(data);
+          displayOnNav(data);
+
+          trash.push(removedData);
+          localStorage.setItem('trash', JSON.stringify(trash));
+          window.location.reload();
+        });
+      });
+    }
+    removeStudent(data);
+  </script>
+</html>

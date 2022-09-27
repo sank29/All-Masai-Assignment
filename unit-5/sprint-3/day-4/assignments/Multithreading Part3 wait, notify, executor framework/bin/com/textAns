@@ -1,0 +1,107 @@
+Q2)  What is a ThreadPool, how to create a thread pool of 4 threads, and write down the
+     difference between the Callable and Runnable interface
+
+Ans: ThreadPool is pool already created threads ready to do tasks. Thread pool framework is also known as executor framework.
+     All threadPool related api in java.util.concurrent package. Threads in ThreadPool never dies unless we shutdown them.
+     We can give my work to one thread, that thread will do his job without dies.
+     
+     We can create 4 threads as follows:
+     
+     import java.util.concurrent
+     
+     class Main{
+       public static void main(String[] args){
+         
+          ThreadPoolExecutor myPoolExecutor = new ScheduledThreadPoolExecutor(4);  // 4 threads are created in threadPool
+          
+       }
+     }
+     
+     Difference between the callable and runnable interface
+     
+     In callable thread returns the value and in runnable we can't return the value from thread. In callable there is public Object
+     call() method is available and in runnable interface there is public void run() method available. Return type Object in callable
+     and return type void in runnable. Callable is available in java.util.concurrent and runnable is available in java.lang package
+     
+     
+Q3)  What do you mean by a Race condition, How to solve a race condition, give a proper example.
+  
+
+Ans: Java is multi-threading language and there is higher chances to occurs the race condition in our programming.
+     Race condition happens because if there is two thread working on single resource then there might be chance one thread
+     is deleting the data and second thread is accessing the same data this situation is called as race condition. We can prevent
+     this condition using synchronized keyword in java.
+     
+     Example: If we want to print even number first and then odd number with 2 thread then we can't print this output because 
+              two thread is working on same task therefore Race condition is happening and we can't expect the output.
+     
+     Main class
+     ----------
+     
+     class Main{
+       public static void main(String[] args){
+           Thread myThread1 = new Thread(new MyRunnable());
+           Thread myThread2 = new Thread(new MyRunnable());
+           
+           myThread1.start();
+           myThread2.start();
+           
+           
+       }
+     }
+  
+  
+     MyRunnable
+     -----------
+     
+     class MyRunnable implements Runnable{
+     
+        @Override
+        public void run(){
+              for(int i=0; i<=10; i++){
+                  if(i%2 == 0){
+                     System.out.println(i + " is even number");
+                  
+                  }else{
+                     System.out.println(i + " is odd number.")    
+              }
+           }
+        }
+     }
+     
+  
+Q4)  Explain about thread synchronization(inter-thread communication).
+Ans: Thread synchronization meaning two thread can communicate with each other this is called as thread synchronization.
+     This way we can gain partially control over it and they can communicate with each other with help of wait(), notify() and
+     notifyAll() keyword. When we need to suspend the thread then we call wait() and if we want to resume the suspended thread then
+     notify() or notifyAll() keyword use. This is know as synchronization or inter thread communication.
+     
+    
+Q5)  What is the difference between the sleep and wait method? 
+Ans: In sleep method we can pass the time how many millisecond we want to sleep or suspend our thread and in wait method our thread
+     will wait for notify or when second thread will die then this thread will do his work. We can call the sleep method in non - 
+     synchronize block and in sleep method we need to call this method on synchronize block.
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

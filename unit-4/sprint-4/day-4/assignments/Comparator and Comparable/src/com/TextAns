@@ -1,0 +1,4 @@
+Q3)  Explain the difference between comparable and comparator.
+Ans: By using comparable we can sort our data by single sorting technique and by using comparator we can sort our data by using multiple sorting technique.
+     We have to populate the existing class for sorting in comparable but in comparator we can sort the data without touching the existing class. compareTo() method
+     use in comparable and compare() method use in comparator.

@@ -1,0 +1,19 @@
+Q3)  What is exception handling in java, Write the hierarchy of Exception class and, Mention some of the predefined Exception classes
+     at least 5, and the reason when those exception class object is generated in our application.
+
+Ans: Exception handling is very important in java if we want to terminate our problem normally if there is a exception in runtime therefore
+     exception handling is required in java. Throwable class is extended by Error class and exception class in java this is the hierarchy
+     of exception. There are lots of predefined exception classes some of them are ArithmaticException, ArrayIndexOutOfBoundExcepion,
+     NullPointerException, RuntimeException, ClassNotFoundException etc.
+     
+     
+     ArithmaticException: This exception occurs when there we are dividing the number with zero. 
+     
+     ArrayIndexOutOfBoundException: This exception ouccurs when we are accessing the index is not present in ArrayList then this 
+                                    exception will create by jvm.
+
+     NullPonterException: This exception occurs when we are accessing the data from null.
+     
+     RuntimeException: This exception occurs in runtime.
+     
+     ClassNotFoundException: When we are requesting a class but that class is not existing in our package then this exception will come.

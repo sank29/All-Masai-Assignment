@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar</title>
+    <style>
+      #navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        border-radius: 10px;
+      }
+      #navbar > div:first-child {
+        margin-left: 10px;
+        color: white;
+      }
+      #navbar > div:nth-child(2) {
+        display: flex;
+        margin-right: 20px;
+      }
+      #navbar > div:nth-child(2) > p {
+        margin-left: 50px;
+        color: white;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      .disable {
+        /* pointer-events: none; */
+        cursor: default;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <div><p>Rebok</p></div>
+      <div>
+        <p class="disable">Men</p>
+        <p class="disable">Woman</p>
+        <p><a href="loginPage.html"> Login</a></p>
+        <p><a href="signUpPage.html">Signup</a></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let disable = document.querySelectorAll('.disable');
+  disable.forEach(function (p) {
+    p.addEventListener('click', function () {
+      console.log('click on disable button');
+      window.location.reload();
+      alert('Please login first');
+    });
+  });
+</script>

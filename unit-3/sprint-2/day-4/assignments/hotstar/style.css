@@ -1,0 +1,51 @@
+ input {
+     width: 500px;
+     height: 50px;
+ }
+
+ #movies {
+     width: 505px;
+     height: 500px;
+     border: 1px solid blue;
+     overflow: scroll;
+ }
+
+ .movie {
+     display: flex;
+     align-items: center;
+     gap: 10px;
+     padding: 10px;
+ }
+
+ .movie img {
+     width: 100px;
+     height: 100px;
+ }
+
+ body{
+    background-color:aqua;
+ }
+
+ #mainHeading{
+    text-align: center;
+ }
+input{
+    display: block;
+    margin: auto;
+}
+ #movies{
+    margin: auto;
+    cursor: pointer;
+ }
+#clickedMovie{
+    width: 50%;
+    margin: auto;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+ .clickedDiv {
+    text-align: center;
+ }
+

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart</title>
+    <style>
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+      }
+      #cartPrice {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 100px;
+      }
+      #promoCode {
+        margin-top: 20px;
+      }
+      #promoCode > button {
+        margin-top: 10px;
+      }
+      #placeOrder {
+        background-color: red;
+        border: 1px solid red;
+        width: 10%;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        margin-left: 83.5%;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="cartPrice"></div>
+    <div id="placeOrder">Place Order</div>
+    <div id="allProduct"></div>
+    <div id="promoCode"></div>
+  </body>
+</html>
+
+<script>
+  let cartProductArr = JSON.parse(localStorage.getItem('cartData')) || [];
+  console.log(cartProductArr);
+  let h1 = document.createElement('h1');
+
+  h1.innerText = 'Cart page 👜';
+
+  let divMain = document.createElement('div');
+  divMain.setAttribute('id', 'container');
+
+  displayOnPage = function (mensData) {
+    divMain.innerHTML = '';
+    mensData.forEach(function (obj) {
+      let divCards = document.createElement('div');
+      divCards.setAttribute('class', 'cards');
+      let img = document.createElement('img');
+      img.setAttribute('src', obj.image_url);
+
+      let p1 = document.createElement('p');
+      p1.innerText = obj.name;
+
+      let p2 = document.createElement('p');
+      p2.innerText = obj.price;
+
+      let button = document.createElement('button');
+      button.innerText = 'Delete to Cart';
+      divCards.append(img, p1, p2, button);
+      divMain.append(divCards);
+    });
+  };
+
+  displayOnPage(cartProductArr);
+
+  let allProduct = document.querySelector('#allProduct');
+  allProduct.append(h1, divMain);
+
+  let button = document.querySelectorAll('button');
+
+  function clickButton(button) {
+    button.forEach(function (button, index) {
+      button.addEventListener('click', function (event) {
+        cartProductArr.splice(index, 1);
+        localStorage.setItem('cartData', JSON.stringify(cartProductArr));
+        displayOnPage(cartProductArr);
+        totalPrice(cartProductArr);
+        location.reload();
+      });
+    });
+  }
+  clickButton(button);
+
+  // Cart Price
+
+  let cartPrice = document.querySelector('#cartPrice');
+
+  let p1 = document.createElement('p');
+  let p2 = document.createElement('p');
+  let totalPriceOfItem;
+
+  function totalPrice(cartProductArr) {
+    totalPriceOfItem = cartProductArr.reduce(function (accu, elem) {
+      return +accu + +elem.price;
+    }, 0);
+    if (totalPriceOfItem === 0) {
+      p1.innerText = 'Keep shopping total item is 🥚';
+      p2.innerText = `You can see total price here 😊`;
+    } else {
+      p1.innerText = `Total number of items ${cartProductArr.length}`;
+      p2.innerText = `Total cart price is ${totalPriceOfItem.toFixed()}`;
+    }
+  }
+  totalPrice(cartProductArr);
+  cartPrice.append(p1, p2);
+
+  // Promocode
+
+  let promoCodeDiv = document.querySelector('#promoCode');
+  let p = document.createElement('p');
+  let promoSubmitButton = document.createElement('button');
+
+  function promoCode(cartProductArr) {
+    if (cartProductArr.length === 0) {
+      p.innerText = 'Please add items to Apply Promo code. Happy Shopping 🛍️';
+      promoCodeDiv.append(p);
+    } else {
+      let input = document.createElement('div');
+      input.innerHTML = `<input type="text" placeholder="Please Enter PromoCode">`;
+      promoSubmitButton.innerText = 'Apply promo code';
+      promoCodeDiv.append(input, promoSubmitButton);
+    }
+  }
+  promoCode(cartProductArr);
+
+  // promocode submit button
+  let input = document.querySelector('input');
+
+  function promoCodeSubmit(promoSubmitButton, cartProductArr) {
+    promoSubmitButton.addEventListener('click', function (event) {
+      let promoCodeValue = input.value;
+      let discountPriceArray = [];
+      let discountPrice;
+      if (promoCodeValue === 'masai30') {
+        let cartProductAfterPromoCode = cartProductArr.map(function (elem) {
+          discountPrice = (elem.price / 100) * 30;
+          elem['price'] = elem.price - discountPrice;
+          discountPriceArray.push(elem);
+        });
+        totalPrice(discountPriceArray);
+        alert(`Hurray you got ${discountPrice.toFixed()} 🤑`);
+      } else {
+        alert('Please Enter Valid Promo code 😅');
+      }
+    });
+  }
+  promoCodeSubmit(promoSubmitButton, cartProductArr);
+
+  let placeOrder = document.querySelector('#placeOrder');
+  placeOrder.addEventListener('click', function (event) {
+    alert(
+      'We are redirecting you toward payment page. Please keep credit card details ready💵'
+    );
+    document.location.href = 'paymentPage.html';
+  });
+</script>

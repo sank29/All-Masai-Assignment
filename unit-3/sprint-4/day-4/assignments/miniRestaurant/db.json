@@ -1,0 +1,25 @@
+{
+  "food": [
+    {
+      "id": "10",
+      "img": "https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/samosa.jpg.webp",
+      "title": "samosa",
+      "description": "this is samosa it is so good tot eat",
+      "price": "20"
+    },
+    {
+      "id": "30",
+      "img": "https://www.nehascookbook.com/wp-content/uploads/2020/11/Moong-dal-khasta-kachori-WS.jpg",
+      "title": "kachori",
+      "description": "this is kachori",
+      "price": "20"
+    },
+    {
+      "id": "QV68EaH",
+      "img": "",
+      "title": "",
+      "description": "",
+      "price": ""
+    }
+  ]
+}

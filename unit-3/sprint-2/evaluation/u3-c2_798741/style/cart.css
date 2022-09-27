@@ -1,0 +1,14 @@
+#cart{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+}
+.food{
+    text-align: center;
+    border: 1px solid red;
+}
+.food>img{
+    width: 100%;
+    height: 400px;
+}

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .mapouter {
+        position: relative;
+        text-align: right;
+        height: 500px;
+        width: 600px;
+      }
+    </style>
+    >
+    <style>
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 500px;
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter City" />
+    <button id="submit">Submit</button>
+    <div id="container"></div>
+    <div class="mapouter">
+      <div class="gmap_canvas">
+        <iframe
+          width="600"
+          height="500"
+          id="gmap_canvas"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+        ></iframe
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  let button = document.querySelector("#submit");
+  button.addEventListener("click", function (event) {
+    let city = document.querySelector("input").value;
+
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=22a01d25104d127a32d2e2ea8681bd09`;
+
+    getWether(url);
+  });
+
+  async function getWether(url) {
+    let data = await fetch(url);
+    data = await data.json();
+
+    append(data);
+  }
+
+  function append(data) {
+    let url = `https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+
+    let container = document.querySelector("#container");
+    container.innerHTML = "";
+    let h2 = document.createElement("h2");
+    h2.innerText = data.name;
+
+    let temp = document.createElement("p");
+    temp.innerText = `Temp: ${data.main.temp}`;
+
+    let minTemp = document.createElement("p");
+    minTemp.innerText = `Min Temp: ${data.main.temp_min}`;
+
+    let maxTemp = document.createElement("p");
+    maxTemp.innerText = `Max Temp: ${data.main.temp_max}`;
+
+    container.append(h2, temp, minTemp, maxTemp);
+
+    let iframe = document.querySelector("#gmap_canvas");
+    iframe.src = url;
+  }
+
+
+ 
+
+function geoLocation(){
+    navigator.geolocation.getCurrentPosition(success);
+  function success(pos) {
+  const crd = pos.coords;
+
+  console.log('Your current position is:');
+  console.log(`Latitude : ${crd.latitude}`);
+  console.log(`Longitude: ${crd.longitude}`);
+  console.log(`More or less ${crd.accuracy} meters.`);
+  getMyData(crd.latitude,crd.longitude)
+}
+}
+geoLocation()
+
+function getMyData(lat,lon) {
+    let city = document.querySelector("input").value;
+
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=22a01d25104d127a32d2e2ea8681bd09`;
+
+    getWether(url);
+  };
+
+  async function getWether(url) {
+    let data = await fetch(url);
+    data = await data.json();
+    append(data);
+  }
+</script>

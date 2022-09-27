@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="userSection"></div>
+  </body>
+</html>
+<script>
+  //   let url = "https://reqres.in/api/users?page=2";
+
+  //   let data = fetch(url);
+
+  //   async function getData() {
+  //     let urlData = await data;
+  //     urlData = urlData.json();
+  //     urlData = await urlData;
+  //     let fianlData = urlData.data;
+  //     append(fianlData);
+  //   }
+
+  //   function append(fianlData) {
+  //     fianlData.forEach(function (obj) {
+  //       let userSection = document.querySelector("#userSection");
+  //       let img = document.createElement("img");
+  //       img.src = obj.avatar;
+
+  //       let p = document.createElement("p");
+  //       p.innerText = `${obj.first_name} ${obj.last_name}`;
+
+  //       let div = document.createElement("div");
+  //       div.append(img, p);
+  //       userSection.append(div);
+  //     });
+  //   }
+  //   getData();
+
+  let url = "https://fakestoreapi.com/products";
+
+  let data = fetch(url);
+
+  async function getData() {
+    let urlData = await data;
+    urlData = urlData.json();
+    urlData = await urlData;
+    let fianlData = urlData;
+    console.log(fianlData);
+    append(fianlData);
+  }
+
+  function append(fianlData) {
+    fianlData.forEach(function (obj) {
+      let userSection = document.querySelector("#userSection");
+      let img = document.createElement("img");
+      img.src = obj.image;
+
+      let p = document.createElement("p");
+      p.innerText = `${obj.title}`;
+      let price = document.createElement("p");
+      price.innerText = `${obj.price}`;
+
+      let div = document.createElement("div");
+      div.append(img, p, price);
+      userSection.append(div);
+    });
+  }
+  getData();
+</script>

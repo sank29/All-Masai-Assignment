@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Database</title>
+    <link rel="stylesheet" href="commonStyles.css" />
+  </head>
+  <style>
+    tbody > tr > td:last-child {
+      background-color: red;
+      color: aqua;
+      cursor: pointer;
+    }
+    .paddingForSelectTag {
+      padding: 10px;
+    }
+  </style>
+
+  <body>
+    <div id="links">
+      <div><a href="index.html">Home</a></div>
+      <div><a href="applied.html">Applied Jobs</a></div>
+      <div><a href="bookmark.html">Bookmarks</a></div>
+    </div>
+
+    <select class="paddingForSelectTag" id="sortByName">
+      <option value="">Short By Names</option>
+      <option value="Ascending">Ascending</option>
+      <option value="Descending">Descending</option>
+    </select>
+
+    <select name="" id="salary" class="paddingForSelectTag">
+      <option value="">Sort By Salary</option>
+      <option value="HighToLow">High To Low</option>
+      <option value="LowToHigh">Low To High</option>
+    </select>
+
+    <select name="" id="role" class="paddingForSelectTag">
+      <option value="">Filter By Role</option>
+      <option value="FSD">FSD</option>
+      <option value="Frontend">Frontend</option>
+      <option value="Backend">Backend</option>
+    </select>
+    <main>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Job applied</th>
+            <th>Salary expected</th>
+            <th>Add to bookmark</th>
+          </tr>
+        </thead>
+        <tbody id="body">
+          <!-- Append your output to tbody -->
+        </tbody>
+      </table>
+    </main>
+  </body>
+  <script>
+    //you need to code here
+    let bookmarkedArray =
+      JSON.parse(localStorage.getItem('bookmarkedArray')) || [];
+
+    let appliedJobObject = JSON.parse(localStorage.getItem('appliedJob'));
+
+    let displayTable = function (appliedJobObject) {
+      let tbody = document.querySelector('tbody');
+      tbody.innerHTML = '';
+      appliedJobObject.forEach(function (obj) {
+        let tr = document.createElement('tr');
+        let td1 = document.createElement('td');
+        td1.innerText = obj.name;
+        let td2 = document.createElement('td');
+        td2.innerText = obj.email;
+        let td3 = document.createElement('td');
+        td3.innerText = obj.role;
+        let td4 = document.createElement('td');
+        td4.innerText = obj.salary;
+
+        let td5 = document.createElement('td');
+        td5.innerText = 'Bookmark';
+
+        td5.addEventListener('click', function () {
+          bookmarked(obj);
+        });
+
+        tr.append(td1, td2, td3, td4, td5);
+
+        let tbody = document.querySelector('tbody');
+
+        tbody.append(tr);
+      });
+    };
+    displayTable(appliedJobObject);
+    function bookmarked(obj) {
+      bookmarkedArray.push(obj);
+      localStorage.setItem('bookmarkedJob', JSON.stringify(bookmarkedArray));
+    }
+
+    let selectName = document.querySelector('#sortByName');
+    let sortByName = function (selectTag) {
+      selectTag.addEventListener('change', function (event) {
+        let selectValue = document.querySelector('#sortByName').value;
+        let sortedArray = [];
+        if (selectValue === 'Ascending') {
+          sortedArray = appliedJobObject.sort(function (a, b) {
+            if (a.name > b.name) return 1;
+
+            if (a.name < b.name) return -1;
+
+            return 0;
+          });
+        }
+        if (selectValue === 'Descending') {
+          sortedArray = appliedJobObject.sort(function (a, b) {
+            if (a.name < b.name) {
+              return 1;
+            }
+            if (a.name > b.name) {
+              return -1;
+            }
+            return 0;
+          });
+        }
+        displayTable(sortedArray);
+      });
+    };
+    sortByName(selectName);
+
+    let selectSalary = document.querySelector('#salary');
+    let sortBySalary = function (selectSalary) {
+      selectSalary.addEventListener('change', function (a, b) {
+        let selectedValue = document.querySelector('#salary').value;
+        let sortedSalary = [];
+        if (selectedValue === 'LowToHigh') {
+          sortedSalary = appliedJobObject.sort(function (a, b) {
+            return a.salary - b.salary;
+          });
+        }
+        if (selectedValue === 'HighToLow') {
+          sortedSalary = appliedJobObject.sort(function (a, b) {
+            return b.salary - a.salary;
+          });
+        }
+        displayTable(sortedSalary);
+      });
+    };
+    sortBySalary(selectSalary);
+
+    let selectRole = document.querySelector('#role');
+    let sortByRole = function (selectRole) {
+      selectRole.addEventListener('change', function () {
+        let selectedValue = document.querySelector('#role').value;
+
+        let sortByRole = appliedJobObject.filter(function (element) {
+          return element.role === selectedValue;
+        });
+
+        displayTable(sortByRole);
+      });
+    };
+    sortByRole(selectRole);
+  </script>
+</html>

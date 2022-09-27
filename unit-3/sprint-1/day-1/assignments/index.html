@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #winner {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+        font-size: 20px;
+      }
+      #allDice {
+        display: flex;
+        width: 50%;
+        margin: auto;
+        justify-content: center;
+        margin-top: 100px;
+      }
+      .dice {
+        border: 5px solid red;
+        width: 100px;
+        height: 100px;
+        margin-left: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        border-radius: 50%;
+      }
+      button {
+        display: block;
+        margin: auto;
+        margin-top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="winner"><h1>Winner Will Show Here</h1></div>
+
+    <div id="allDice">
+      <div class="dice" id="member-1"></div>
+      <div class="dice" id="member-2"></div>
+      <div class="dice" id="member-3"></div>
+    </div>
+
+    <button id="roll">Roll All Dice</button>
+  </body>
+  <script>
+    let button = document.querySelector('button');
+    button.addEventListener('click', function (event) {
+      let member1 = randomfunction();
+      let member2 = randomfunction();
+      let member3 = randomfunction();
+      let arr = [];
+      arr.push(member1);
+      arr.push(member2);
+      arr.push(member3);
+
+      let winner = document.querySelector('#winner');
+
+      let dice1 = document.querySelector('#member-1');
+      dice1.innerText = member1;
+      let dice2 = document.querySelector('#member-2');
+      dice2.innerText = member2;
+      let dice3 = document.querySelector('#member-3');
+      dice3.innerText = member3;
+
+      dice1.style.backgroundColor = 'white';
+      dice2.style.backgroundColor = 'white';
+      dice3.style.backgroundColor = 'white';
+
+      if (member1 > member2 && member1 > member3) {
+        dice1.style.backgroundColor = 'green';
+        winner.innerText = 'Member A';
+        if (member2 > member3) {
+          dice2.style.backgroundColor = 'yellow';
+          dice3.style.backgroundColor = 'red';
+        } else if (member3 > member2) {
+          dice3.style.backgroundColor = 'yellow';
+          dice2.style.backgroundColor = 'red';
+        } else {
+          dice2.style.backgroundColor = 'blue';
+          dice3.style.backgroundColor = 'blue';
+        }
+      } else if (member2 > member1 && member2 > member3) {
+        dice2.style.backgroundColor = 'green';
+        winner.innerText = 'Member B';
+
+        if (member1 > member3) {
+          dice1.style.backgroundColor = 'yellow';
+          dice3.style.backgroundColor = 'red';
+        } else if (member3 > member1) {
+          dice3.style.backgroundColor = 'yellow';
+          dice1.style.backgroundColor = 'red';
+        } else {
+          dice1.style.backgroundColor = 'blue';
+          dice3.style.backgroundColor = 'blue';
+        }
+      } else if (member3 > member1 && member3 > member2) {
+        dice3.style.backgroundColor = 'green';
+        winner.innerText = 'Member C';
+
+        if (member1 > member2) {
+          dice1.style.backgroundColor = 'yellow';
+          dice2.style.backgroundColor = 'red';
+        } else if (member2 > member1) {
+          dice2.style.backgroundColor = 'yellow';
+          dice1.style.backgroundColor = 'red';
+        } else {
+          dice1.style.backgroundColor = 'blue';
+          dice2.style.backgroundColor = 'blue';
+        }
+      } else if (member2 === member1 && member2 === member3) {
+        winner.innerText = 'Draw';
+        dice1.style.backgroundColor = 'blue';
+        dice2.style.backgroundColor = 'blue';
+        dice3.style.backgroundColor = 'blue';
+      } else if (member1 === member2) {
+        winner.innerText = 'Member A and Member B';
+        dice1.style.backgroundColor = 'blue';
+        dice2.style.backgroundColor = 'blue';
+        dice3.style.backgroundColor = 'red';
+      } else if (member1 === member3) {
+        winner.innerText = 'Member A and Member C';
+        dice1.style.backgroundColor = 'blue';
+        dice3.style.backgroundColor = 'blue';
+        dice2.style.backgroundColor = 'red';
+      } else if (member2 === member3) {
+        winner.innerText = 'Member B and Member C';
+        dice2.style.backgroundColor = 'blue';
+        dice3.style.backgroundColor = 'blue';
+        dice1.style.backgroundColor = 'red';
+      } else if (member2 === member1) {
+        winner.innerText = 'Member C and Member A';
+        dice1.style.backgroundColor = 'blue';
+        dice2.style.backgroundColor = 'blue';
+        dice3.style.backgroundColor = 'red';
+      }
+    });
+
+    function randomfunction() {
+      return Math.floor(Math.random() * 6) + 1;
+    }
+
+    console.log(randomfunction());
+  </script>
+</html>

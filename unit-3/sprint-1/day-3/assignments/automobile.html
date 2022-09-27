@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  //Object creating using Object.create()
+
+  let car = {
+    type: 'car',
+    tank: 'Disel tank',
+    accelerator: function () {
+      console.log(`Your car is accelerating now`);
+    },
+    break: function () {
+      console.log('Your car is getting slow');
+    },
+  };
+
+  let bmw = Object.create(car);
+  bmw.name = 'BMW';
+
+  console.log(bmw);
+  console.log(bmw.name);
+  bmw.accelerator();
+  bmw.break();
+
+  let tata = Object.create(car);
+  tata.name = 'tata';
+
+  console.log(tata.type);
+  tata.accelerator();
+  tata.break();
+
+  //Object creating using constructor functions().
+
+  function carFunction(name) {
+    this.name = name;
+    type: 'car';
+    tank: 'Disel tank';
+
+    this.accelerator = function () {
+      console.log(`Your ${this.name} car is accelerating now`);
+    };
+
+    this.carBreak = function () {
+      console.log(`Your ${this.name} car is getting slow`);
+    };
+  }
+
+  let bmw2 = new carFunction('bmw');
+
+  bmw2.accelerator();
+  bmw2.carBreak();
+
+  let tata2 = new carFunction('tata');
+
+  tata2.accelerator();
+</script>

@@ -1,0 +1,51 @@
+Q2)  Explain the difference between Checked and Unchecked exceptions. write some examples of checked and unchecked exception classes.
+
+Ans: In checked exception compile force to handle that exception in compile time and in unchecked exception we can handle the exception
+     at runtime if there are any exception occurs. Example of checked exception is ClassNotFoundException and example of unchecked 
+     exception is ArithmaticExcepion NullPointerException etc.
+     
+     Examples of checked Exception:
+     
+     class Main{
+       public static void main(String[] args){
+          try{
+             Class.forName("Student")
+          }catch(ClassNotFoundException cfe){
+             System.out.println(cfe.getMessage());
+          }
+          
+       
+       }
+     } 
+     
+     
+     Example of checked Exception:
+     
+     class Main{
+        public static void main(String[] agrs){
+           try{
+              int result = a/b;
+           }catch(ArithmaticException e){
+              System.out.prinln(e);
+           }
+        }
+     }
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     

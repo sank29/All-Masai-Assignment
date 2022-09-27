@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        border: 1px solid red;
+        width: 20%;
+        height: 200px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      #navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        border-radius: 10px;
+      }
+      #navbar > div:first-child {
+        margin-left: 10px;
+        color: white;
+      }
+      #navbar > div:nth-child(2) {
+        display: flex;
+        margin-right: 20px;
+      }
+      #navbar > div:nth-child(2) > p {
+        margin-left: 50px;
+        color: white;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <div><p>Rebok</p></div>
+      <div>
+        <p>Cart</p>
+        <p class="disable">Men</p>
+        <p class="disable">Woman</p>
+        <p><a href="loginPage.html"> Login</a></p>
+        <p><a href="signUpPage.html">Signup</a></p>
+      </div>
+    </div>
+    <h1>Signup Page</h1>
+    <form action="">
+      <label for="name">Name:</label>
+      <input id="name" type="text" placeholder="Enter Your Name" />
+      <label for="email">Email:</label>
+      <input id="email" type="text" placeholder="Enter Your Email Id" />
+      <label for="password">Password:</label>
+      <input id="password" type="text" placeholder="Enter Your Password" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
+
+<script>
+  let signUpUserData = JSON.parse(localStorage.getItem('signUpData')) || [];
+
+  let form = document.querySelector('form');
+  function signUpUser(form, signUpUserData) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      let name = form.name.value;
+      let email = form.email.value;
+      let password = form.password.value;
+
+      let obj = {
+        name: name,
+        email: email,
+        password: password,
+      };
+
+      if (obj.name.length === 0) {
+        alert('Please enter your name 😅');
+      } else if (obj.email.length === 0) {
+        alert('Please enter your email 😅');
+      } else if (obj.password.length === 0) {
+        alert('Please enter your password 😅');
+      } else {
+        if (checkUser(signUpUserData, obj)) {
+          alert('This email is already register please login 😅');
+        } else {
+          signUpUserData.push(obj);
+          localStorage.setItem('signUpData', JSON.stringify(signUpUserData));
+          alert(
+            'Your successfully signup, we are redirecting you toward login page 😎'
+          );
+          window.location.href = 'loginPage.html';
+        }
+      }
+    });
+  }
+  signUpUser(form, signUpUserData);
+
+  function checkUser(signUpUserData, obj) {
+    let tempObj = signUpUserData.filter(function (elem) {
+      return elem.email === obj.email;
+    });
+    console.log(tempObj);
+    if (tempObj.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>

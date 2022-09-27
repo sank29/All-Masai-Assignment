@@ -1,0 +1,111 @@
+Q1)  What is the difference between a synchronized method and a synchronized block?
+Ans: If we want to synchronize the only method then we can use synchronized key word and we can synchronized the method and if we want to synchronized only
+     few line of code then we can synchronized only block. If one thread is executing the synchronized method and other thread also invoke that method then
+     that threads need to wait while this thread his job on this method and in block also.
+     
+     example of synchronized method :
+     
+     synchronized public void printName(){
+          for(int i=0; i<= 3; i++){
+            System.out.println("Masai");
+          }
+     }
+     
+     example of synchronized block :
+     
+     public void printName(){
+         
+         synchronized(this){
+            System.out.println("Masai");
+         }
+      
+     }
+     
+     
+     
+Q2)  What’s the difference between class lock and object lock?
+Ans: If thread want to perform any action on the block then it will need class level lock or object level lock according to the lock given by user.
+     If the thread have class level lock it will allowed to do his job and if the thread have object level lock then it need object level lock.
+     
+     
+     
+Q4)  What do you mean by a Race condition, How to solve a race condition, give a proper example.
+  
+
+Ans: Java is multi-threading language and there is higher chances to occurs the race condition in our programming.
+     Race condition happens because if there is two thread working on single resource then there might be chance one thread
+     is deleting the data and second thread is accessing the same data this situation is called as race condition. We can prevent
+     this condition using synchronized keyword in java.
+     
+     Example: If we want to print even number first and then odd number with 2 thread then we can't print this output because 
+              two thread is working on same task therefore Race condition is happening and we can't expect the output.
+     
+     Main class
+     ----------
+     
+     class Main{
+       public static void main(String[] args){
+           Thread myThread1 = new Thread(new MyRunnable());
+           Thread myThread2 = new Thread(new MyRunnable());
+           
+           myThread1.start();
+           myThread2.start();
+           
+           
+       }
+     }
+  
+  
+     MyRunnable
+     -----------
+     
+     class MyRunnable implements Runnable{
+     
+        @Override
+        public void run(){
+              for(int i=0; i<=10; i++){
+                  if(i%2 == 0){
+                     System.out.println(i + " is even number");
+                  
+                  }else{
+                     System.out.println(i + " is odd number.")    
+              }
+           }
+        }
+     }
+     
+     
+     
+Q5)  What is the Difference between the sleep and join method .
+Ans: Suspending the thread based on time is called sleep method and suspending a thread based on condition is called join. If we want to suspend our thread 
+     then there is static method sleep() is there and if we want to suspend a running thread then we should use join() method. sleep() is static method and
+     join() is non-static method. 
+     
+     Thread.sleep(1000); the thread will sleep for 1000 millisecond and it will start his job then and t1 calls join() method on another thread t2 then t1 thread
+     will be enter into waiting state until t2 thread completes his job.
+     
+     
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

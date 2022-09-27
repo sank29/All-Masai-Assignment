@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="query" type="text" />
+    <button onclick="search()">Search</button>
+    <div id="container"></div>
+    <style>
+      #container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+      }
+    </style>
+  </body>
+</html>
+
+<script>
+  const apiKey = "AIzaSyAINvX2_A_I5UIihl9q71WZqWg-KIPj5m0";
+
+  let search = async () => {
+    let query = document.querySelector("#query").value;
+    getData(query);
+
+    let data = await getData(query);
+    append(data);
+  };
+
+  let getData = async (query) => {
+    let url = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&key=${apiKey}`;
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    return data.items;
+  };
+
+  let append = (data) => {
+    let container = document.querySelector("#container");
+
+    data.forEach((el) => {
+      let img = document.createElement("img");
+      img.src = el.snippet.thumbnails.medium.url;
+
+      let h3 = document.createElement("h3");
+      h3.innerText = el.snippet.title;
+
+      let div = document.createElement("div");
+      div.onclick = () => {
+        saveVideo(el);
+      };
+      div.setAttribute("class", "video");
+      div.append(img, h3);
+
+      container.append(div);
+    });
+  };
+
+  let saveVideo = (data) => {
+    localStorage.setItem("video", JSON.stringify("data"));
+    window.location.href = "video.html";
+  };
+</script>

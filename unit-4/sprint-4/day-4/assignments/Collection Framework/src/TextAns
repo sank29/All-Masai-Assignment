@@ -1,0 +1,11 @@
+Q1)  Explain the difference between ArrayList and LinkedList
+Ans: ArrayList use dynamic array to store the elements and linkedList use a doubly linkedList to store the elements. If we want to remove element from arrayList is
+     expensive because we have to shift all the indexes after removing the element in ArrayList and in linkedList we don't need to shift the indexes of element after
+     removing the element only need to change the the address in the node. ArrayList is best for storing and accessing the data whereas LinkList is best of
+     manipulating the data
+   
+   
+Q3)  Explain the difference between equals() and HashCode() Method.
+Ans: Hashcode method returns the unique value to related to object and equals method check the object refereances equality of two object whether those object is same or not.
+     In hashcode that hashcode value came from memory address in heap and in equals method if and only if two object are same when their memory address is same.
+     When can override this method and write our logic accordingly in equals method and we can't override the hashcode method to do our logic.

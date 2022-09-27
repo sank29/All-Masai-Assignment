@@ -1,0 +1,27 @@
+Q1)  Explain the meaning of the deadlock in multithreaded application, when it can occur in multithreading applications.Write one example of deadlock.
+Ans: If two thread is wait for each lock and code goes in infinite time this situation is called deadlock, meaning lock without key, two thread will wait each
+     other for infinite time. When there there is synchronized block with key in it this is reason it will occur. We can't prevent the deadlock but we can
+     prevent from happening.
+     
+     Example:
+     
+     
+     Thread One:-
+     
+     synchronized(this){
+       A.fun1();
+     }
+     
+     
+     Thread second:-
+     
+     synchronized(this){
+      B.fun1();
+     }
+     
+     In this above example thread one is calling to the fun1 method but fun1 method is synchronized method with taken by thread second that's why thread one
+     needs that lock and other side thread second is calling fun1 of object B is taken by thread one that's why thread second need that key both thread is 
+     waiting for each thread to drop key but each thread is waiting for each other therefore deadlock happen.
+     
+     
+     

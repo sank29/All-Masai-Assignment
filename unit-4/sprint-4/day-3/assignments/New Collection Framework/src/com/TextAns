@@ -1,0 +1,17 @@
+Q2)  What is the difference between ArrayList and Array?
+Ans: An array is dynamically created object and arrayList is a class of java collection framework. Array is static size and ArrayList is dynamic size.
+     Array is size length and arrayList is dynamic size. We can find length using length in array and in arrayList we use size() to find length. We use for each
+     loop to get the element and in arrayList we use iterator to iterate element in arrayList.
+     
+     
+Q3)  Explain AutoBoxing and Auto UnBoxing with Examples.
+Ans: The conversion of primitive data type to it's wrapper class is known as autoBoxing and opposite of autoBoxing is unBoxing that is converting wrapper class into 
+     it's primitive type is know as UnBoxing. 
+     
+     Example:
+     AutoBoxing:
+     Integer a = new Integer(3);
+     
+     UnBoxing:
+     Integer i=new Integer(100);  
+     int a=i;      

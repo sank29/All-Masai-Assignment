@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #navbar {
+        background-color: black;
+        color: white;
+        padding: 10px;
+      }
+      #navbar > p {
+        text-align: center;
+      }
+      #bashbordButton {
+        display: block;
+        margin: auto;
+        margin-top: 100px;
+      }
+      #headLine {
+        text-align: center;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        width: 20%;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar"></div>
+    <button id="bashbordButton"><a href="dashboard.html">dashboard</a></button>
+    <h1 id="headLine">Add Student Data</h1>
+    <form action="">
+      <input id="name" type="text" placeholder="Name" />
+      <input type="text" id="course" name="" placeholder="Course" />
+      <input type="text" id="unit" placeholder="Unit" />
+      <input type="text" id="image" placeholder="Image" />
+      <input type="number" id="batch" placeholder="Ft-web Batch No." />
+      <input type="submit" />
+    </form>
+  </body>
+
+  <script>
+    let data = JSON.parse(localStorage.getItem('data')) || [];
+    function myStudentObj(name, course, unit, image, batch) {
+      this.name = name;
+      this.course = course;
+      this.unit = unit;
+      this.image = image;
+      this.batch = `FT-WEB${batch}`;
+    }
+
+    let form = document.querySelector('form');
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let name = form.name.value;
+      let course = form.course.value;
+      let unit = form.unit.value;
+      let image = form.image.value;
+      let batch = form.batch.value;
+
+      let studentsData = new myStudentObj(name, course, unit, image, batch);
+      data.push(studentsData);
+      localStorage.setItem('data', JSON.stringify(data));
+      window.location.reload();
+    });
+
+    //display batch on navbar
+    let navbar = document.querySelector('#navbar');
+    let p = document.createElement('p');
+
+    let batchObj = calculate(data);
+
+    for (let element in batchObj) {
+      p.innerText += ` ${element} - ${batchObj[element]} | `;
+    }
+
+    navbar.append(p);
+
+    function calculate(data) {
+      let batchObj = {};
+
+      for (let i = 0; i <= data.length - 1; i++) {
+        if (batchObj[data[i].batch] === undefined) {
+          batchObj[data[i].batch] = 1;
+        } else {
+          batchObj[data[i].batch]++;
+        }
+      }
+      console.log(batchObj);
+      return batchObj;
+    }
+  </script>
+</html>

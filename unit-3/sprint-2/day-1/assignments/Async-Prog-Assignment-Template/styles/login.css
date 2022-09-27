@@ -1,0 +1,50 @@
+#navbar {
+    border: 2px solid black;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#navbar>p {
+    margin-left: 30px;
+    margin-right: 30px;
+    color: #000000;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+#login-form-div {
+    border: 1px solid transparent;
+    margin: auto;
+    width: 25%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 100px;
+}
+
+#login-form-div>h1 {
+    text-align: center;
+}
+
+form>input {
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+form>input:last-child {
+    border: transparent;
+    display: block;
+    margin: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #008080;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+

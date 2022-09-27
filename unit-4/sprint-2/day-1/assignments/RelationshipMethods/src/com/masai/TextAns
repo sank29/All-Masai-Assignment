@@ -1,0 +1,5 @@
+Q1)     Differentiate between static and non-static variables?
+Ans:    If variables is non-static then we can't use that variable in static area. We can't use non static variables directly in static 
+        methods, we need to change from non-static to static or take the instance of that class and load all the non-static variables
+        in object and then use all that variables in our program. We can use static variables from anywhere in same class.
+           

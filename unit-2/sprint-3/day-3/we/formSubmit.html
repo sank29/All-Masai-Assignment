@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 50%;
+        margin: auto;
+        margin-top: 300px;
+      }
+    </style>
+  </head>
+  <body></body>
+
+  <div id="container">
+    <form action="">
+      <input type="text" id="name" placeholder="Name" />
+      <input type="number" name="" id="age" placeholder="Age" />
+      <select name="" id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <input type="text" id="email" placeholder="Email" />
+      <input type="number" id="mobileNumber" placeholder="Mobile Number" />
+      <input type="submit" />
+    </form>
+  </div>
+</html>
+
+<script>
+  let arr = [];
+  let formValue = document.querySelector('form');
+  formValue.addEventListener('submit', form);
+
+  function form() {
+    let obj = {};
+    event.preventDefault();
+    let name = document.querySelector('#name').value;
+    let age = document.querySelector('#age').value;
+
+    let gender = document.querySelector('select').value;
+    let email = document.querySelector('#email').value;
+    let mobile = document.querySelector('#mobileNumber').value;
+
+    obj['name'] = name;
+    obj['age'] = age;
+    obj['gender'] = gender;
+    obj['email'] = email;
+    obj['mobile'] = mobile;
+    arr.push(obj);
+    console.log(arr);
+  }
+</script>

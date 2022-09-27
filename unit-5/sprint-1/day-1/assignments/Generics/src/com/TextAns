@@ -1,0 +1,26 @@
+Question 1: Explain difference between PriorityQueue() and LinkedList().
+Ans: PriorityQueue is special type of queue to store the data in this queue we can give the priority of our store the data and we can
+     access that data accordingly and in linkedList we can add our data we can access that data accordingly. Priority queue is very useful
+     if we want our data in priority manner and linkedList is useful if our most of the operation is deleting and adding in the linkedList.
+     
+
+Question 4: Explain Generics in Java and Its Importance with example  
+Ans:   From generics in java we can make our collection type Type-safety. Type safety means we can store only one type data in our 
+       collection and we can't add more than one type of data in collection, if we add so then our compiler will throw the error and 
+       we can't compile our code. If we use generics then we don't need to type cast our object and we can safely use that collection
+       for our work. 
+       
+       Example:
+       
+       class Main{
+         public static void main(String[] args){
+             ArrayList<String> arrString = new ArrayList<>();
+             
+             arrString.add("Sanket");
+             arrString.add("Akash");
+             arrString.add(10); // compile time error
+         }
+       }
+       
+       In this above example we are assigning the type in diamond bracket and we are assigning the type String then we can't assign the
+       other that String type in ArrayList collection. 

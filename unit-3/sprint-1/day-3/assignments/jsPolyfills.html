@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  let arr = [10, 20, 30];
+
+  //Map function
+  Array.prototype.myMap = function (Mapfun) {
+    let newArr = [];
+    for (let i = 0; i <= this.length - 1; i++) {
+      let element = this[i];
+      let result = Mapfun(element);
+      newArr.push(result);
+    }
+    return newArr;
+  };
+  let finalResult = arr.myMap(function (element) {
+    return element * 2;
+  });
+  console.log(finalResult);
+
+  // forEach function
+  Array.prototype.myForEach = function (fun) {
+    for (let i = 0; i <= this.length - 1; i++) {
+      let element = this[i];
+      let result = fun(element);
+    }
+  };
+  arr.myForEach(function (element) {
+    console.log(element * 2);
+  });
+
+  //Filter function
+  Array.prototype.myFilter = function (fun) {
+    let newArr = [];
+    for (let i = 0; i <= this.length - 1; i++) {
+      let element = this[i];
+      let result = fun(element);
+      if (result === true) {
+        newArr.push(element);
+      }
+    }
+    return newArr;
+  };
+
+  let filterResult = arr.myFilter(function (element) {
+    return element === 1000;
+  });
+  console.log(filterResult);
+
+  //Reduce function
+  console.log(arr);
+  Array.prototype.myReduce = function (func, accum) {
+    let i = 0;
+    // console.log(arguments.length);
+
+    if (arguments.length < 2) {
+      i = 1;
+      accum = this[0];
+    }
+
+    for (; i <= this.length - 1; i++) {
+      let currentResult = this[i];
+      accum = func(accum, currentResult);
+    }
+    return accum;
+  };
+  let reduceResult = arr.myReduce(function (accum, element) {
+    // console.log(accum, element);
+    return accum * element;
+  }, 100);
+  console.log(reduceResult);
+</script>

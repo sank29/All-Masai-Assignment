@@ -1,0 +1,21 @@
+#displayData{
+    display: flex;
+    margin-top: 10px;
+}
+.cardDiv{
+    border: 1px solid red;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#submitProduct{
+    background-color: green;
+    color: white;
+    cursor: pointer;
+}
+
+#deleteProduct{
+    background-color: red;
+    color: white;
+    cursor: pointer;
+}

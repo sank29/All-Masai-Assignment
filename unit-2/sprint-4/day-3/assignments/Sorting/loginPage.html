@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      form {
+        border: 1px solid red;
+        width: 20%;
+        height: 200px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+      #navbar {
+        display: flex;
+        justify-content: space-between;
+        background-color: black;
+        border-radius: 10px;
+      }
+      #navbar > div:first-child {
+        margin-left: 10px;
+        color: white;
+      }
+      #navbar > div:nth-child(2) {
+        display: flex;
+        margin-right: 20px;
+      }
+      #navbar > div:nth-child(2) > p {
+        margin-left: 50px;
+        color: white;
+        cursor: pointer;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <div><p>Rebok</p></div>
+      <div>
+        <p>Cart</p>
+        <p class="disable">Men</p>
+        <p class="disable">Woman</p>
+        <p><a href="loginPage.html"> Login</a></p>
+        <p><a href="signUpPage.html">Signup</a></p>
+      </div>
+    </div>
+    <h1>Login Page</h1>
+    <form action="">
+      <label for="email">Email:</label>
+      <input id="email" type="text" placeholder="Enter Your Email Id" />
+      <label for="password">Password:</label>
+      <input id="password" type="text" placeholder="Enter Your Password" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
+
+<script>
+  let form = document.querySelector('form');
+  let signUpData = JSON.parse(localStorage.getItem('signUpData')) || [];
+  let loginData = JSON.parse(localStorage.getItem('loginData')) || [];
+
+  function loginUser(form, signUpData) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let loginObj = {
+        email: form.email.value,
+        password: form.password.value,
+      };
+      if (checkUser(loginObj, signUpData)) {
+        loginData.push(loginObj);
+        localStorage.setItem('loginData', JSON.stringify(loginData));
+        alert(
+          'Your successfully login, we are redirecting you toward mens page 😎'
+        );
+        window.location.href = 'mensPage.html';
+      } else {
+        alert('Please enter valid email id or password😅');
+      }
+    });
+  }
+  loginUser(form, signUpData);
+
+  function checkUser(loginObj, signUpData) {
+    let tempArr = signUpData.filter(function (elem) {
+      console.log(loginObj);
+      return (
+        elem.email === loginObj.email && elem.password === loginObj.password
+      );
+    });
+    if (tempArr.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+</script>

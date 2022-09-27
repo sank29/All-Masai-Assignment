@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: ghostwhite;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      input {
+        display: block;
+        margin: auto;
+        padding: 10px;
+      }
+      button {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        background-color: red;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      /* display Part*/
+
+      #movies {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: auto;
+        gap: 20px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+
+      .poster {
+        text-align: center;
+        cursor: pointer;
+        border-bottom: 10px;
+      }
+
+      .poster:hover {
+        box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+      }
+
+      .poster:hover {
+        transition: 2s;
+        background-color: aqua;
+      }
+
+      .poster > img {
+        width: 100%;
+      }
+
+      #notFound {
+        text-align: center;
+      }
+
+      #notFoundImg {
+        display: block;
+        margin: auto;
+      }
+
+      select {
+        display: block;
+        margin: auto;
+        margin-top: 20px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Trending Movies🎬</h1>
+    <div id="movies"></div>
+  </body>
+</html>
+<script>
+  let movieDiv = document.querySelector('#movies');
+
+  let data = fetch(
+    `https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=e32abdede8d6a3cba83b5db723471f00`
+  );
+  getMovie(data);
+
+  async function getMovie(data) {
+    let movieData = await data;
+    movieData = await movieData.json();
+    movieData = movieData.results;
+
+    display(movieData);
+  }
+
+  // Display Part
+
+  function display(movieArr) {
+    console.log(movieArr);
+    movieDiv.innerHTML = '';
+
+    movieArr.forEach(function (objData) {
+      let moviePoster = document.createElement('div');
+      moviePoster.setAttribute('class', ' poster');
+
+      let posterImg = document.createElement('img');
+      posterImg.setAttribute(
+        'src',
+        `https://image.tmdb.org/t/p/w500${objData.backdrop_path}`
+      );
+
+      let h2 = document.createElement('h2');
+      h2.innerText = `${objData.original_title}`;
+
+      let h3 = document.createElement('p');
+      h3.innerText = `${objData.overview}`;
+
+      let language = document.createElement('p');
+      language.innerText = `Release Date: ${objData.release_date}`;
+
+      let p = document.createElement('p');
+      p.innerText = `IMDB Rating: ${objData.vote_average}`;
+
+      moviePoster.append(posterImg, h2, h3, language, p);
+      movieDiv.append(moviePoster);
+    });
+  }
+</script>

@@ -1,0 +1,27 @@
+Q1)  Explain why Java is platform independent ?
+
+Ans: Java is platform independent because all java code compiled in byte code and this byte code or this
+     .class file we can run on any platform that's why java is platform independent.
+
+     .Class file or byte code makes java platform independent. When we compiled the code then .class 
+     file generated and this file can executable on all platform.
+
+
+
+
+Q3) Change this block of code according to the given instruction and explain the output?
+
+    public class Demo {
+      public static void main(String[] args) {
+         int a = 64;
+         int b = 70;
+         byte c = (byte)a+b;//typecast (a+b) to byte
+         System.out.println(c){
+    }
+   }
+
+Ans: If when what to type cast the int value into byte then we need to cast explicitly (byte)
+     into the code then int value will cast into byte and then we can store that value into byte c
+     variable
+
+     byte c = (byte)a+b need in code to store the value in byte c. 

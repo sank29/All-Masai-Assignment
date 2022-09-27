@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #otp {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OTP Page</h1>
+    <div id="otp">
+      <h2>Your OTP is 1234</h2>
+      <button>Back to Payment Page</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  button = document.querySelector('button');
+  console.log(button);
+  button.addEventListener('click', function (event) {
+    alert('We are redirecting you toward payment page');
+    window.location.href = 'paymentPage.html';
+  });
+</script>
